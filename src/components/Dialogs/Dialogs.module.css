@@ -5,11 +5,17 @@
 
 .dialogsItems {
     padding: 10px;
-    color: white;
 }
 
-.dialogsItems .active {
+.active {
     color: gold;
+    text-decoration: none;
+    padding-left: 10px;
+}
+.inactive {
+    color: white;
+    text-decoration: none;
+    padding-left: 10px;
 }
 
 .messages {
@@ -18,5 +24,9 @@
 
 .messages .message {
     color: white;
+}
+.avatar img {
+    width: 40px;
+    border-radius: 50%;
 }
 

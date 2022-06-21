@@ -1,0 +1,9 @@
+
+.item {
+    color: cornflowerblue;
+    font-size: 15px;
+}
+.item img {
+    width: 40px;
+    border-radius: 50%;
+}

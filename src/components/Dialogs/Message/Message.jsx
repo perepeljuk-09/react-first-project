@@ -1,8 +1,13 @@
 import React from 'react';
-import s from './../Dialogs.module.css';
+import s from './Message.module.css';
+
 
 const Message = (props) => {
-    return <div className={s.dialog}>{props.message}</div>
+  if (props.id % 2 != 0) {
+    return <div className={s.myMessage}>{props.message}</div>
+  } else {
+    return <div className={s.yourMessage}>{props.message}</div>
+  }
 }
 
 export default Message;

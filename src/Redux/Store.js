@@ -1,3 +1,7 @@
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+
+
 let store = {
   _state: {
     profilePage: {
@@ -29,44 +33,26 @@ let store = {
       newMessageText: 'add text'
     }
   },
-  getState() {
-    return this._state
-  },
   _callSubscriber () {
 
   },
-  addMessage() {
-    let newMessage = {
-      id: 6,
-      message: this._state.messagePage.newMessageText
-    }
-    this._state.messagePage.messages.push(newMessage);
-    this._state.messagePage.newMessageText = '';
-    this._callSubscriber(this._state);
-  },
-  updateNewTextMessage(newText) {
-    this._state.messagePage.newMessageText = newText
-    this._callSubscriber(this._state);
-  },
-  addPost() {
-    let newPost = {
-      id: 5,
-      message: this._state.profilePage.newPostText,
-      likesCount: 0
-    };
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostText = '';
-    this._callSubscriber(this._state);
-  },
-  updateNewTextPost(newText) {
-    this._state.profilePage.newPostText = newText;
-    this._callSubscriber(this._state);
-  },
-  Subscribe(observer) {
-    this._callSubscriber = observer;
-  }
 
+  getState() {
+    return this._state
+  },
+  subscribe(observer) {
+    this._callSubscriber = observer;
+  },
+
+  dispatch(action){
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.messagePage = dialogsReducer(this._state.messagePage, action);
+
+    this._callSubscriber(this._state);
+  }
 }
+
+
 
 window.store = store;
 export default store;

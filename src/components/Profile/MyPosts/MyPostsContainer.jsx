@@ -3,9 +3,10 @@ import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 import {addPostActionCreator, updateNewTextPostActionCreator} from "../../../Redux/profile-reducer";
+import MyPosts from "./MyPosts";
 
 
-const MyPosts = (props) => {
+const MyPostsContainer = (props) => {
 
     let postsElements = props.profilePage.posts.map( p => <Post message={p.message} likesCount={p.likesCount}/>);
 
@@ -23,22 +24,7 @@ const MyPosts = (props) => {
       props.dispatch(action);
     }
 
-    return (
-        <div className={s.postsBlock}>
-            <h3>My posts</h3>
-            <div>
-                <div>
-                    <textarea onChange={onPostChange} ref={newPostElement} value={props.profilePage.newPostText} />
-                </div>
-                <div>
-                    <button onClick={ addPost }>Add post</button>
-                </div>
-            </div>
-            <div className={s.posts}>
-                { postsElements }
-            </div>
-        </div>
-    )
+    return (<MyPosts />)
 }
 
-export default MyPosts;
+export default MyPostsContainer;

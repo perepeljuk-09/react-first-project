@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
-import StoreContext from "./StoreContext";
+import {Provider} from "react-redux";
 
 // AddPost('SamuraiJS.COM')
 
@@ -15,9 +15,9 @@ let rerenderEntireTree = (state) => {
   root.render(
       <BrowserRouter>
         <React.StrictMode>
-          <StoreContext.Provider value={store}>
+          <Provider store={store}>
             <App/>
-          </StoreContext.Provider>
+          </Provider>
         </React.StrictMode>
       </BrowserRouter>
   );

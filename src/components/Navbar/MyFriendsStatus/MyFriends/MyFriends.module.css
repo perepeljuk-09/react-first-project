@@ -1,0 +1,7 @@
+
+.title {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    color: cornflowerblue;
+    font-size: 15px;
+}

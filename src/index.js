@@ -5,18 +5,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
+import StoreContext from "./StoreContext";
 
 // AddPost('SamuraiJS.COM')
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 let rerenderEntireTree = (state) => {
-  debugger;
   root.render(
       <BrowserRouter>
         <React.StrictMode>
-          <App state={state}
-               dispatch={store.dispatch.bind(store)}/>
+          <StoreContext.Provider value={store}>
+            <App/>
+          </StoreContext.Provider>
         </React.StrictMode>
       </BrowserRouter>
   );

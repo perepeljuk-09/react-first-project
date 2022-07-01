@@ -5,7 +5,7 @@ import MyFriends from "./MyFriends/MyFriends";
 
 const mapStateToProps = (state) => {
   return {
-    friendsArray: state.messagePage.dialogs.map(f => <Status id={f.id} name={f.name}/>)
+    friendsArray: state.messagePage.dialogs.map(f => <Status id={f.id} name={f.name} key={f.id}/>)
   };
 }
 

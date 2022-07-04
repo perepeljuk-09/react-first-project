@@ -1,41 +1,18 @@
 import React from "react";
 import s from "./Users.module.css"
+import * as axios from "axios";
+import photoUser from "../../../images/IE-l-GBgcX8.jpg"
 
 const Users = (props) => {
   if (props.users.length === 0)
-  {
-  props.setUsers([
-    {
-      id: 1,
-      photoUrl: 'https://scx2.b-cdn.net/gfx/news/hires/2018/bonobosprefe.jpg',
-      followed: false,
-      fullName: 'Alexandr',
-      status: 'i am here',
-      location: {country: 'Russia', city: 'Moscow'}
-    },
-    {
-      id: 2,
-      photoUrl: 'https://scx2.b-cdn.net/gfx/news/hires/2018/bonobosprefe.jpg',
-      followed: true,
-      fullName: 'Gucci',
-      status: 'Gucci is here',
-      location: {country: 'Russia', city: 'Sankt-Petergurg'}
-    },
-    {
-      id: 3,
-      photoUrl: 'https://scx2.b-cdn.net/gfx/news/hires/2018/bonobosprefe.jpg',
-      followed: true,
-      fullName: 'Vlad',
-      status: 'Vlad i am the best',
-      location: {country: 'Russia', city: 'Magadan'}
-    }
-  ])
-  }
-
+  axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+    debugger;
+    props.setUsers(response.data.items)
+  })
   return <div>
     {
       props.users.map(u => <div key={u.id}>
-            <img src={u.photoUrl} className={s.photoStyle} alt="photoUsers"/>
+            <img src={u.photos.large != null ? u.photos.large:photoUser} className={s.photoStyle} alt="photoUsers"/>
             <div>
               {u.followed
                     ? <button onClick={() => {props.unfollow(u.id)}}>unfollow</button>
@@ -43,16 +20,16 @@ const Users = (props) => {
               }
             </div>
             <div>
-              {u.fullName}
+              {u.name}
             </div>
             <div>
               {u.status}
             </div>
             <div>
-              {u.location.country}
+              {"u.location.country"}
             </div>
             <div>
-              {u.location.city}
+              {"u.location.city"}
             </div>
           </div>
       )

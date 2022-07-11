@@ -7,4 +7,12 @@
     width: 81px;
     padding: 2px;
 }
+.loginBlock {
+    float: right;
 
+}
+
+.loginBlock a {
+    color: white;
+    text-decoration: none;
+}

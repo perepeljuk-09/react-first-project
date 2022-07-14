@@ -5,6 +5,7 @@ import Message from "./Message/Message";
 import {Navigate} from "react-router-dom";
 
 const Dialogs = (props) => {
+  debugger;
       let state = props.messagePage
 
     let dialogsElements =  state.dialogs.map( d => <DialogItem name={d.name} id={d.id} />  );

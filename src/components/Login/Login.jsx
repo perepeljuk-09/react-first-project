@@ -9,8 +9,8 @@ const LoginContainer = (props) => {
 const LoginForm = () => {
 
   const validationSchema = yup.object().shape({
-    email: yup.string().email('Введите верный email').required('Обязательное поле'),
-    password: yup.string().typeError('Должно быть строкой').required('Обязательное поле')
+    email: yup.string().email('Enter the correct email').required('Required field'),
+    password: yup.string().typeError('Must be s string').required('Required field')
   })
 
   return <div>
@@ -41,6 +41,9 @@ const LoginForm = () => {
                      onChange={handleChange} onBlur={handleBlur} value={values.password}/>
             </p>
             { touched.password && errors.password && <p>{errors.password}</p>}
+            <div>
+              <Field type="checkbox" name="rememberMe"/> Remember me
+            </div>
             <button type={"submit"} disabled={!isValid && !dirty} onClick={handleBlur}>
               Submit
             </button>
